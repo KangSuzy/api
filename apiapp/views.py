@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404, redirect
 from .forms import BoardForm
 from .models import Board
 from django.utils import timezone
+import requests
+import json
 
 # Create your views here.
 
@@ -43,3 +45,4 @@ def delete(request, pk):
     board = Board.objects.get(id=pk)
     board.delete()
     return redirect('show')
+
