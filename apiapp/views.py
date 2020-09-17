@@ -46,3 +46,9 @@ def delete(request, pk):
     board.delete()
     return redirect('show')
 
+# Kakao api
+url = "https://dapi.kakao.com/v2/search/web"
+queryString = {"query" : "덕성여자대학교"}
+header = {"Authorization":"KakaoAK 0b251c77a3d989e136e64cc26a3ddb05"}
+r = requests.get(url, headers=header, params = queryString)
+print(json.loads(r.text))
