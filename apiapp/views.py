@@ -2,8 +2,7 @@ from django.shortcuts import render,get_object_or_404, redirect
 from .forms import BoardForm
 from .models import Board
 from django.utils import timezone
-import requests
-import json
+
 
 # Create your views here.
 
@@ -45,10 +44,3 @@ def delete(request, pk):
     board = Board.objects.get(id=pk)
     board.delete()
     return redirect('show')
-
-# Kakao api
-url = "https://dapi.kakao.com/v2/search/web"
-queryString = {"query" : "덕성여자대학교"}
-header = {"Authorization":"KakaoAK 0b251c77a3d989e136e64cc26a3ddb05"}
-r = requests.get(url, headers=header, params = queryString)
-print(json.loads(r.text))
